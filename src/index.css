@@ -1,0 +1,57 @@
+/* index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define Proxima Nova font */
+@font-face {
+	font-family: "Proxima Nova";
+	src: url("/fonts/Fontspring-DEMO-proximanova-regular.otf") format("opentype"),
+		url("/fonts/Fontspring-DEMO-proximanova-regular.otf") format("otf");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Proxima Nova";
+	src: url("/fonts/Fontspring-DEMO-proximanova-extrabold.otf")
+			format("opentype"),
+		url("/fonts/Fontspring-DEMO-proximanova-extrabold.otf") format("otf");
+	font-weight: 800;
+	font-style: normal;
+}
+
+body {
+	font-family: "Proxima Nova", sans-serif;
+	@apply bg-base-100 text-[1.4rem] transition-all duration-300 ease-in-out;
+}
+
+.container {
+	@apply max-w-[128rem] mx-auto px-32;
+}
+
+@media (max-width: 1280px) {
+	.container {
+		@apply mx-auto px-0;
+	}
+}
+
+p {
+	@apply text-base;
+}
+
+input {
+	@apply text-sm hover:bg-white rounded-sm outline outline-1 outline-gray-800 px-4 py-2;
+}
+
+input::placeholder {
+	@apply text-gray-600;
+}
+
+button {
+	@apply text-sm text-white hover:text-gray-800 bg-gray-800 outline outline-1 hover:outline hover:bg-white outline-gray-800 px-4 py-2 rounded-sm;
+}
+
+.icon {
+	@apply ml-1;
+}

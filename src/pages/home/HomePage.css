@@ -1,0 +1,67 @@
+.home-page {
+}
+
+h1 {
+	font-family: "Montserrat", "Proxima Nova", sans-serif;
+	@apply text-7xl font-semibold;
+}
+
+.anc-btn {
+	/* filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));  // Outline effect  */
+
+	@apply rounded-md px-6 py-1;
+}
+
+.a-nav-center {
+	@apply hover:outline-gray-200 py-1 rounded-sm;
+}
+
+.a-domain {
+	@apply cursor-pointer hover:outline outline-2 outline-gray-200 rounded-sm py-2;
+}
+
+.a-logo {
+	@apply cursor-pointer hover:outline outline-2 outline-gray-200 cursor-pointer px-2 rounded-sm;
+}
+
+.div-dropdown {
+	@apply hover:outline outline-2 outline-gray-200 rounded-sm py-3 px-3;
+}
+
+.login-btn {
+	@apply cursor-pointer text-sm py-2 px-4 rounded-sm hover:bg-white hover:outline outline-2 outline-gray-200 mx-2;
+}
+
+.signup-btn {
+	@apply cursor-pointer text-sm bg-gray-200 py-2 px-4 rounded-sm hover:bg-white hover:outline outline-2 outline-gray-200;
+}
+
+.reviews .images {
+	display: flex;
+	margin-right: 4rem;
+	position: relative;
+}
+
+.reviews .images img {
+	background-color: white;
+	border-radius: 50%;
+	width: 2rem;
+	height: 2rem;
+	padding: 2px;
+	border: 2px solid black;
+}
+
+.reviews .images img:nth-child(1) {
+	left: 0;
+}
+
+.reviews .images img:nth-child(2) {
+	position: absolute;
+	left: 80%;
+}
+
+.reviews .images img:nth-child(3) {
+	position: absolute;
+	left: 160%;
+}
+
