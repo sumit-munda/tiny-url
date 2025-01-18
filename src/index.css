@@ -21,6 +21,8 @@
 	font-style: normal;
 }
 
+/* font-color #1f2937 rgba(31,41,55,255) */
+
 body {
 	font-family: "Proxima Nova", sans-serif;
 	@apply bg-base-100 text-[1.4rem] transition-all duration-300 ease-in-out;
@@ -49,9 +51,10 @@ input::placeholder {
 }
 
 button {
-	@apply text-sm text-white hover:text-gray-800 bg-gray-800 outline outline-1 hover:outline hover:bg-white outline-gray-800 px-4 py-2 rounded-sm;
+	@apply text-sm btn-primary hover:text-gray-800 bg-gray-800 outline outline-1 hover:outline hover:bg-white outline-gray-800 px-4 py-2 rounded-sm;
 }
 
 .icon {
-	@apply ml-1;
+	@apply mx-1;
 }
+
