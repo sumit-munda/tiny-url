@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/home/HomePage";
 import LoginPage from "./pages/login/LoginPage";
 import SignupPage from "./pages/signup/SignupPage";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 // import AppLayout from "./components/AppLayout";
 
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
 	{
 		path: "/signup",
 		element: <SignupPage />,
+	},
+	{
+		path: "/dashboard",
+		element: <Dashboard />,
 	},
 	{
 		path: "*", // Fallback route for unknown paths

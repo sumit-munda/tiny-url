@@ -1,8 +1,10 @@
 import React from "react";
 // images
-import { domain, logo} from "../main";
+import { domain, logo } from "../main";
 
 const Header = () => {
+	const designer = { src: logo, tooltip: "Designed by Su." };
+
 	return (
 		<header>
 			<div className="navbar bg-base-100">
@@ -62,12 +64,36 @@ const Header = () => {
 					</a>
 
 					{/* Image for larger screens */}
-					<a className="a-logo hidden lg:block">
+					{/* <a className="a-logo hidden lg:block">
 						<img
-							src={logo}
+							src={designer.src}
 							alt="logo"
 							width={80}
+							className="cursor-pointer"
 						/>
+						<span className="relative group">
+							<button className="px-0 py-0 bg-white text-white outline-none hover:text-white font-sans">
+								Designed By Sumit.
+							</button>
+							<span className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/5 w-full text-white bg-black text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+								<span>
+									<span>Designed by </span>
+									<span className="font-pacifico">Su.</span>
+								</span>
+							</span>
+						</span>
+					</a> */}
+
+					<a className="a-logo hidden lg:block relative group">
+						<img
+							src={designer.src}
+							alt="logo"
+							width={120}
+							className="cursor-pointer pr-10"
+						/>
+						<span className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/5 w-full text-white bg-black text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+							Designed by <span className="font-pacifico">Su.</span>
+						</span>
 					</a>
 				</div>
 				<div className="navbar-center hidden lg:flex">
@@ -103,7 +129,11 @@ const Header = () => {
 						className="login-btn">
 						Login{" "}
 					</a>
-					<a href="/signup" className="signup-btn">Sign Up</a>
+					<a
+						href="/signup"
+						className="signup-btn">
+						Sign Up
+					</a>
 				</div>
 			</div>
 		</header>

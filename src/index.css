@@ -28,6 +28,12 @@ body {
 	@apply bg-base-100 text-[1.4rem] transition-all duration-300 ease-in-out;
 }
 
+/* Remove icon font styles globally (if they're causing the issue) */
+[class^="fa-"],
+[class*=" fa-"] {
+	font-family: unset !important;
+}
+
 .container {
 	@apply max-w-[128rem] mx-auto px-32;
 }
@@ -57,4 +63,3 @@ button {
 .icon {
 	@apply mx-1;
 }
-

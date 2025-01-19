@@ -1,5 +1,5 @@
 import React from "react";
-import { man, man2, qrcode, woman } from "../main";
+import { qrcode, } from "../main";
 import { PiMouseLeftClickFill } from "react-icons/pi";
 
 const Main = () => {
@@ -13,7 +13,7 @@ const Main = () => {
 					/>
 					<div>
 						<p>
-							<span className="flex items-center my-2 text-gray-700 bg-gray-300 w-max py-2 px-4 rounded-full">
+							<span className="flex items-center my-2 text-gray-800 bg-gray-300 w-max py-2 px-4">
 								You are just one click away...
 								<PiMouseLeftClickFill />
 							</span>
@@ -23,7 +23,7 @@ const Main = () => {
 							Shorten, share, and track your URLs effortlessly with our powerful
 							URL shortener.
 						</p>
-						<div>
+						<div className="flex">
 							<input
 								type="text"
 								placeholder="Paste your url here and ..."
@@ -35,31 +35,61 @@ const Main = () => {
 								</span>
 							</button>
 						</div>
-						<div className="reviews flex items-center my-4">
-							<div className="images flex">
-								<img
-									className="img1"
-									src={man}
-									alt="man"
-								/>
 
-								<img
-									className="img2"
-									src={man2}
-									alt="man2"
-								/>
-
-								<img
-									className="img3"
-									src={woman}
-									alt="woman"
-								/>
+						<div className="reviews flex items-center my-4 y">
+							<div className="avatar-group -space-x-6 rtl:space-x-reverse">
+								<div className="avatar">
+									<div className="w-10 h-10">
+										<img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+									</div>
+								</div>
+								<div className="avatar">
+									<div className="w-10 h-10">
+										<img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+									</div>
+								</div>
+								<div className="avatar">
+									<div className="w-10 h-10">
+										<img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+									</div>
+								</div>
+								<div className="avatar placeholder">
+									<div className="bg-neutral text-neutral-content w-10 h-10">
+										<span>+99</span>
+									</div>
+								</div>
 							</div>
-							<div className="rating">
-								<p className="text-sm">
-									⭐⭐⭐⭐⭐
-									<br /> 100+reviews
-								</p>
+
+							<div className="rating flex-col ml-4 w-100 h-50">
+								<div className="stars">
+									<input
+										type="radio"
+										name="rating-2"
+										className="mask mask-star-2 bg-yellow-400"
+									/>
+									<input
+										type="radio"
+										name="rating-2"
+										className="mask mask-star-2 bg-yellow-400"
+										defaultChecked
+									/>
+									<input
+										type="radio"
+										name="rating-2"
+										className="mask mask-star-2 bg-yellow-400"
+									/>
+									<input
+										type="radio"
+										name="rating-2"
+										className="mask mask-star-2 bg-yellow-400"
+									/>
+									<input
+										type="radio"
+										name="rating-2"
+										className="mask mask-star-2 bg-yellow-400"
+									/>
+								</div>
+								<p className="ml-2 text-xs">99 + reviews</p>
 							</div>
 						</div>
 					</div>

@@ -1,10 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 import daisyui from "daisyui";
 export default {
-	content: [
-		  "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}", 
-	],
+	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		extend: {
 			colors: {
@@ -15,6 +12,9 @@ export default {
 				bgCard: "#FFFFFF", // White background for cards
 				textLight: "#333333", // Dark text color for light theme
 				textDark: "#F7F7F7", // Light text color for dark theme
+			},
+			fontFamily: {
+				pacifico: ["Pacifico" ,"cursive"], // Adding Pacifico font to Tailwind
 			},
 		},
 	},
@@ -32,6 +32,15 @@ export default {
 					neutral: "#F7F7F7", // Background light
 					"base-100": "#FFFFFF", // Card background white
 					"base-content": "#333333", // Dark text color
+				},
+				fontFamily: {
+					sans: [
+						"Montserrat",
+						"Proximax Nova",
+						"Pacifico",
+						"cursive",
+						"sans-serif",
+					], // Defining the fonts
 				},
 			},
 		],

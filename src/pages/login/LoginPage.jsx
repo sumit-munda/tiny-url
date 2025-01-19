@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useFirebase } from "../../context/firebase";
 // import { useToast } from "../../context/Toast";
 import { toast } from "react-toastify";
+import Dashboard from "../dashboard/Dashboard";
 
 const LoginPage = () => {
 	const [email, setEmail] = useState("");
@@ -21,16 +22,17 @@ const LoginPage = () => {
 
 	if (firebase.isLoggedIn) {
 		return (
-			<div className="container">
-				<p>You are logged in.</p>
-				<button
-					className="btn-primary"
-					onClick={() => {
-						firebase.handleLogout(), (window.location.href = "/");
-					}}>
-					Logout
-				</button>
-			</div>
+			<Dashboard />
+			// <div className="container">
+			// 	<p>You are logged in.</p>
+			// 	<button
+			// 		className="btn-primary"
+			// 		onClick={() => {
+			// 			firebase.handleLogout(), (window.location.href = "/");
+			// 		}}>
+			// 		Logout
+			// 	</button>
+			// </div>
 		);
 	}
 
