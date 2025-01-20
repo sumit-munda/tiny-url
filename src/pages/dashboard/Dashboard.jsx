@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { domain, logo } from "../../main";
 import "./Dashboard.css";
 import { FaBell, FaRegBell } from "react-icons/fa6";
@@ -14,18 +14,34 @@ import { FaRegQuestionCircle } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 import { BsQrCode } from "react-icons/bs";
 import { RiRoadMapLine } from "react-icons/ri";
-import { Line } from "react-chartjs-2";
 import revenueData from "../../assets/data/revenueData.json";
 import Analytics from "../../components/Analytics";
 
 import "../../App.css";
-
-const firebase = () => useFirebase();
-console.log(firebase);
+import { useNavigate } from "react-router-dom";
+import QRCode from "react-qr-code";
+import { toast } from "react-toastify";
 
 const Dashboard = () => {
-	const email = "John Doe";
+	const [link, setLink] = useState("");
+	const [genQrCode, setGenQrCode] = useState(false);
+	const [loading, setLoading] = useState(false);
 
+	const handleInputChange = (e) => {
+		setLink(e.target.value);
+	};
+
+	const handleGenQrCode = () => {
+		setLoading(true);
+		if (link) {
+			setGenQrCode(true);
+			setLoading(false);
+		} else toast.warn("Please enter a valid link.");
+	};
+
+	const email = "John Doe";
+	const firebase = useFirebase();
+	const navigate = useNavigate();
 	return (
 		<section className="dash-borad container">
 			<header>
@@ -153,7 +169,7 @@ const Dashboard = () => {
 									<a>Settings</a>
 								</li>
 								<li>
-									<a>Logout</a>
+									<a href="/">Logout</a>
 								</li>
 							</ul>
 						</div>
@@ -189,7 +205,7 @@ const Dashboard = () => {
 							FAQs
 						</button>
 					</div>
-					<button>
+					<button onClick={() => navigate("/")}>
 						<BiLogOut className="icon" />
 						Logout
 					</button>
@@ -211,11 +227,15 @@ const Dashboard = () => {
 							<p className="text-sm">Create, short, and manage your links</p>
 							<div className="flex">
 								<input
-									type="text"
+									type="url"
 									placeholder="Paste your url here and ..."
 									className="w-52"
+									value={link}
+									onChange={handleInputChange}
 								/>
-								<button className="ml-2">
+								<button
+									className="ml-2"
+									onClick={handleGenQrCode}>
 									<span className="flex items-center">
 										Click <PiMouseLeftClickFill className="icon" />
 									</span>
@@ -223,7 +243,10 @@ const Dashboard = () => {
 							</div>
 						</div>
 						<div className="link-box flex flex-col gap-5 outline outline-1 outline-black rounded-sm p-2">
-							<p className="d-b-para"><PiLinkSimpleBold className="icon" />CUSTOMIZED LINK</p>
+							<p className="d-b-para">
+								<PiLinkSimpleBold className="icon" />
+								CUSTOMIZED LINK
+							</p>
 							<div className="site-image">
 								<img
 									src={logo}
@@ -234,6 +257,7 @@ const Dashboard = () => {
 								<i className="fa-solid fa-link"></i> tinyurl.com
 							</a>
 						</div>
+						{/* qr box */}
 						<div className="qr-box outline outline-1 outline-black rounded-sm p-2">
 							<p className="d-b-para">
 								<BsQrCode className="icon" />
@@ -241,31 +265,39 @@ const Dashboard = () => {
 							</p>
 
 							<div className="qr-details">
-								<div className="qr-code">
-									<BsQrCode className=" w-20 h-20" />
-								</div>
-								<div className="more-details">
-									<div className="link">
-										<p>
-											<i className="fa-solid fa-link"></i> tinyurl.com
-										</p>
-									</div>
-									<div className="date">
-										<p>
-											<i className="fa-solid fa-calendar-days"></i> 22 December
-											2024
-										</p>
-									</div>
-									<button className="btn-b">Download PNG</button>
+								<div className="qr-code h-20">
+									{genQrCode ? (
+										link && (
+											<div className="qr-box flex gap-6">
+												<div className="qr-code">
+													<QRCode
+														value={link}
+														size={80}
+													/>
+												</div>
+												<div className="more-detailsflex flex-col">
+													<p className="text-sm ">
+														<i className="fa-solid fa-link"></i> tinyurl.com
+													</p>
+
+													<p className="text-sm mb-2">
+														<i className="fa-solid fa-calendar-days"></i> 22
+														December 2024
+													</p>
+
+													<button className="btn-b">Download PNG</button>
+												</div>
+											</div>
+										)
+									) : (
+										<p className="text-sm">Get QR Code here...</p>
+									)}
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			{/* <hr className="mt-1 h-0 border border-black border-1"/> */}
-			{/* <Footer /> */}
 		</section>
 	);
 };

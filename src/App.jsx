@@ -7,6 +7,8 @@ import HomePage from "./pages/home/HomePage";
 import LoginPage from "./pages/login/LoginPage";
 import SignupPage from "./pages/signup/SignupPage";
 import Dashboard from "./pages/dashboard/Dashboard";
+import QrCode from "./components/QrCode";
+import LinkPreview from "./components/LinkPreview";
 
 // import AppLayout from "./components/AppLayout";
 
@@ -27,6 +29,10 @@ const router = createBrowserRouter([
 	{
 		path: "/dashboard",
 		element: <Dashboard />,
+	},
+	{
+		path: "/linkpreview",
+		element: <LinkPreview />,
 	},
 	{
 		path: "*", // Fallback route for unknown paths
