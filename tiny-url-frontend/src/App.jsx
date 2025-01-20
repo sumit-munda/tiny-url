@@ -9,6 +9,7 @@ import SignupPage from "./pages/signup/SignupPage";
 import Dashboard from "./pages/dashboard/Dashboard";
 import QrCode from "./components/QrCode";
 import LinkPreviewImage from "./components/LinkPreviewImage";
+import  LinkPreviewFavicon from './components/LinkPreviewFavicon'
 
 
 // import AppLayout from "./components/AppLayout";
@@ -32,8 +33,12 @@ const router = createBrowserRouter([
 		element: <Dashboard />,
 	},
 	{
+		path: "/linkpreviewfavicon",
+		element: <LinkPreviewFavicon />,
+	},
+	{
 		path: "/linkpreviewimage",
-		element: <LinkPreviewImage />,
+		element: <LinkPreviewFavicon/>
 	},
 	{
 		path: "*", // Fallback route for unknown paths
