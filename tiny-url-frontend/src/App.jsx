@@ -8,7 +8,8 @@ import LoginPage from "./pages/login/LoginPage";
 import SignupPage from "./pages/signup/SignupPage";
 import Dashboard from "./pages/dashboard/Dashboard";
 import QrCode from "./components/QrCode";
-import LinkPreview from "./components/LinkPreview";
+import LinkPreviewImage from "./components/LinkPreviewImage";
+
 
 // import AppLayout from "./components/AppLayout";
 
@@ -31,8 +32,8 @@ const router = createBrowserRouter([
 		element: <Dashboard />,
 	},
 	{
-		path: "/linkpreview",
-		element: <LinkPreview />,
+		path: "/linkpreviewimage",
+		element: <LinkPreviewImage />,
 	},
 	{
 		path: "*", // Fallback route for unknown paths

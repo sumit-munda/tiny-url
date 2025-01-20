@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const LinkPreview = () => {
+const LinkPreviewFavicon = () => {
 	const [link, setLink] = useState("");
 	const [faviconUrl, setFaviconUrl] = useState("");
 
@@ -38,4 +38,4 @@ const LinkPreview = () => {
 	);
 };
 
-export default LinkPreview;
+export default LinkPreviewFavicon;
