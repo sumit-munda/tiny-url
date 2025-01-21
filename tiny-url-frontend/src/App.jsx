@@ -7,10 +7,11 @@ import HomePage from "./pages/home/HomePage";
 import LoginPage from "./pages/login/LoginPage";
 import SignupPage from "./pages/signup/SignupPage";
 import Dashboard from "./pages/dashboard/Dashboard";
-import QrCode from "./components/QrCode";
-import LinkPreviewImage from "./components/LinkPreviewImage";
-import  LinkPreviewFavicon from './components/LinkPreviewFavicon'
-
+import LinkPreviewFavicon from "./components/test-components/LinkPreviewFavicon";
+import LinkResult from "./components/test-components/Uuid";
+import Uuid from "./components/test-components/Uuid";
+import { elements } from "chart.js";
+import NodeplusReact from "./components/test-components/NodeplusReact";
 
 // import AppLayout from "./components/AppLayout";
 
@@ -33,12 +34,8 @@ const router = createBrowserRouter([
 		element: <Dashboard />,
 	},
 	{
-		path: "/linkpreviewfavicon",
-		element: <LinkPreviewFavicon />,
-	},
-	{
-		path: "/linkpreviewimage",
-		element: <LinkPreviewFavicon/>
+		path: "/apiconnect",
+		element: <NodeplusReact />,
 	},
 	{
 		path: "*", // Fallback route for unknown paths

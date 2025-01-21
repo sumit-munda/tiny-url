@@ -26,6 +26,7 @@ const Dashboard = () => {
 	const [link, setLink] = useState("");
 	const [genQrCode, setGenQrCode] = useState(false);
 	const [loading, setLoading] = useState(false);
+	const [faviconUrl, setFaviconUrl] = useState("");
 
 	const handleInputChange = (e) => {
 		setLink(e.target.value);
@@ -37,6 +38,24 @@ const Dashboard = () => {
 			setGenQrCode(true);
 			setLoading(false);
 		} else toast.warn("Please enter a valid link.");
+	};
+
+	const fetchFavicon = () => {
+		if (link) {
+			try {
+				const domain = new URL(link).hostname;
+				const favicon = `https://${domain}/favicon.ico`;
+				setFaviconUrl(favicon);
+			} catch (error) {
+				setFaviconUrl("");
+				alert("invalid url.");
+			}
+		}
+	};
+
+	const handleButtonClick = () => {
+		handleGenQrCode();
+		fetchFavicon(link, setFaviconUrl);
 	};
 
 	const email = "John Doe";
@@ -235,25 +254,30 @@ const Dashboard = () => {
 								/>
 								<button
 									className="ml-2"
-									onClick={handleGenQrCode}>
+									onClick={handleButtonClick}>
 									<span className="flex items-center">
 										Click <PiMouseLeftClickFill className="icon" />
 									</span>
 								</button>
 							</div>
 						</div>
-						<div className="link-box flex flex-col gap-5 outline outline-1 outline-black rounded-sm p-2">
+						<div className="link-box grid grid-rows-[1fr_4fr_1fr] gap-2 place-items-stretch outline outline-1 outline-black rounded-sm p-2 h-1/3">
 							<p className="d-b-para">
 								<PiLinkSimpleBold className="icon" />
 								CUSTOMIZED LINK
 							</p>
-							<div className="site-image">
-								<img
-									src={logo}
-									alt="site-image"
-								/>
+							<div className="boundary outline-black outline-1 outline flex items-center justify-center">
+								<div className="flex items-center justify-center">
+									{loading && <p>Loading...</p>}
+									<img
+										src={faviconUrl}
+										alt="site-image"
+									/>
+								</div>
 							</div>
-							<a href="">
+							<a
+								href=""
+								className="text-sm">
 								<i className="fa-solid fa-link"></i> tinyurl.com
 							</a>
 						</div>
@@ -266,6 +290,7 @@ const Dashboard = () => {
 
 							<div className="qr-details">
 								<div className="qr-code h-20">
+									{loading && <p>Loading...</p>}
 									{genQrCode ? (
 										link && (
 											<div className="qr-box flex gap-6">
