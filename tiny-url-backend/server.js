@@ -1,43 +1,39 @@
+// node.js api server
 import express from "express";
-import axios from "axios";
-import * as cheerio from "cheerio";
 import cors from "cors";
+import dotenv from "dotenv";
+import connectDB from "./config/db.js";
+import tinyurlRoutes from "./routes/tinyurlRoutes.js";
+
+// .load env vars
+dotenv.config();
+
+// connect to the database
+connectDB();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
-// Enable CORS for frontend to make requests to backend
+// middleware cors cross origin resource sharing
 app.use(cors());
 
-// Function to fetch OG image
-const getOgImage = async (url) => {
-	try {
-		const { data } = await axios.get(url);
-		const $ = cheerio.load(data);  // Corrected here
-		const ogImage = $('meta[property="og:image"]').attr("content");
-		return ogImage || null;
-	} catch (error) {
-		console.error("Error fetching OG image: ", error);
-		return null;
-	}
-};
+// for parsing JSON request bodies
+app.use(express.json());
 
-// Define API route to fetch the image
-app.get("/fetch-og-image", async (req, res) => {
-	const { url } = req.query; // Extract URL from query parameters
-	if (!url) {
-		return res.status(400).json({ error: "URL is required" });
-	}
+// use messageRoutes to handle all routes under /api/message
+app.use("/", tinyurlRoutes);
 
-	const ogImage = await getOgImage(url);  // Fetch OG image for the provided URL
-	if (ogImage) {
-		res.json({ imageUrl: ogImage });  // Respond with the OG image URL
-	} else {
-		res.status(404).json({ error: "OG image not found" });
-	}
+app.get("/", (req, res) => {
+	res.send("🚚 chalo delhi...");
 });
 
-// Start the server
-app.listen(PORT, () => {
-	console.log(`Server is running on http://localhost:${PORT}`);
-});
+// app.get("/api/message", (req, res) => {
+// 	res.json({
+// 		message:
+// 			"https://unsplash.com/photos/green-trees-near-lake-and-snow-covered-mountain-during-daytime-3w_hlbOAibU",
+// 	});
+// });
+
+app.listen(PORT, () =>
+	console.log(`Server running on http://localhost:${PORT}`)
+);
